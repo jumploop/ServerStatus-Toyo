@@ -32,7 +32,7 @@ def get_memory():
 	for line in open('/proc/meminfo'):
 		match = re_parser.match(line)
 		if not match:
-			continue;
+			continue
 		key, value = match.groups(['key', 'value'])
 		result[key] = int(value)
 
@@ -65,7 +65,7 @@ def get_load():
 	#return os.getloadavg()[0]
 
 def get_time():
-	stat_file = file("/proc/stat", "r")
+	stat_file = open("/proc/stat", "r")
 	time_list = stat_file.readline().split(' ')[2:6]
 	stat_file.close()
 	for i in range(len(time_list))  :
